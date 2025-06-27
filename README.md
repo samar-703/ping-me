@@ -22,12 +22,18 @@ You can get started here:
 git clone https://github.com/samar-703/ping.git
 cd ping
 
+
 # Backend setup
 cd backend
+
 npm install
+
 npm run dev
 
+
 # Frontend setup (in a new terminal)
-cd frontend
+cd frontend 
+
 npm install
+
 npm start
