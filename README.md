@@ -1,8 +1,8 @@
-REPOSITORY OVERVIEW - PING ME (FULL STACK APP FOR REAL TIME CHAT AND VIDEO CALL )
+REPOSITORY OVERVIEW - PING ME (FULL STACK APP FOR REAL-TIME CHAT AND VIDEO CALL )
 
 -- Features
 - Learn & practice languages with real people
-- Real time chat (StreamApi)
+- Real-time chat (StreamApi)
 - Peer-to-peer video calling (StreamVideo)
 - Add friends and view their language interests
 - JWT Auth (Signup/Login)
