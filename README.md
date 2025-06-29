@@ -1,7 +1,7 @@
 
 # Repository Overview
 
-FULL STACK AND VIDEO CALLING APP
+FULL-STACK CHAT AND VIDEO CALLING APP
 
 Features:
 
