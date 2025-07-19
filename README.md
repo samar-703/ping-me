@@ -15,7 +15,7 @@ Features:
 
 
 
-## Teck Stack
+## Tech Stack
 
 Frontend: React, React Router, Axios
 
