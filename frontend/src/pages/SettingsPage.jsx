@@ -95,7 +95,7 @@ const SettingsPage = () => {
                 onChange={(e) =>
                   setAuthUser({ ...authUser, bio: e.target.value })
                 }
-                disabled
+                disabled={true}
               />
             </div>
             <div className="form-control w-full max-w-xs">
