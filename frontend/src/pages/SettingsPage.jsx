@@ -227,16 +227,6 @@ const SettingsPage = () => {
             </div>
             <div className="form-control">
               <label className="label cursor-pointer">
-                <span className="label-text">Sound Effects</span>
-                <input
-                  type="checkbox"
-                  defaultChecked
-                  className="toggle toggle-primary"
-                />
-              </label>
-            </div>
-            <div className="form-control">
-              <label className="label cursor-pointer">
                 <span className="label-text">Keyboard Shortcuts</span>
                 <input
                   type="checkbox"
