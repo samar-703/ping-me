@@ -83,6 +83,21 @@ const SettingsPage = () => {
                 disabled
               />
             </div>
+            <div className="form-control w-full max-w-md">
+              <label className="label">
+                <span className="label-text">Bio</span>
+              </label>
+              <textarea
+                placeholder={authUser?.bio || "Tell us about yourself..."}
+                className="textarea textarea-bordered w-full max-w-md resize-none"
+                rows={3}
+                value={authUser?.bio || ""}
+                onChange={(e) =>
+                  setAuthUser({ ...authUser, bio: e.target.value })
+                }
+                disabled
+              />
+            </div>
             <div className="form-control w-full max-w-xs">
               <label className="label">
                 <span className="label-text">Email</span>
