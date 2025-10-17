@@ -7,94 +7,55 @@ import {
   MessageCircle,
   Phone,
 } from "lucide-react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Link } from "react-router";
+import {
+  getUserFriends,
+  getRecommendedUsers,
+  sendFriendRequest,
+  getOutgoingFriendReqs,
+} from "../lib/api";
+import { getLanguageFlag } from "../components/FriendCard";
+import { capitialize } from "../lib/utils";
 
 const FriendsPage = () => {
   const [activeTab, setActiveTab] = useState("friends");
+  const queryClient = useQueryClient();
 
-  // Static data for friends
-  const friends = [
-    {
-      id: 1,
-      name: "Alex Johnson",
-      bio: "Language enthusiast from New York",
-      profilePic:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-      status: "online",
-      nativeLanguage: "English",
-      learningLanguage: "Spanish",
-      location: "New York, USA",
-    },
-    {
-      id: 2,
-      name: "Maria Garcia",
-      bio: "Native Spanish speaker, learning French",
-      profilePic:
-        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
-      status: "online",
-      nativeLanguage: "Spanish",
-      learningLanguage: "French",
-      location: "Madrid, Spain",
-    },
-    {
-      id: 3,
-      name: "Yuki Tanaka",
-      bio: "Japanese teacher and anime lover",
-      profilePic:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-      status: "away",
-      nativeLanguage: "Japanese",
-      learningLanguage: "English",
-      location: "Tokyo, Japan",
-    },
-    {
-      id: 4,
-      name: "Emma Wilson",
-      bio: "French literature student",
-      profilePic:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
-      status: "offline",
-      nativeLanguage: "French",
-      learningLanguage: "German",
-      location: "Paris, France",
-    },
-  ];
+  // Fetch real friends data
+  const { data: friends = [], isLoading: loadingFriends } = useQuery({
+    queryKey: ["friends"],
+    queryFn: getUserFriends,
+  });
 
-  // Static data for suggestions
-  const suggestions = [
-    {
-      id: 5,
-      name: "Carlos Rodriguez",
-      bio: "Native Portuguese speaker",
-      profilePic:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
-      nativeLanguage: "Portuguese",
-      learningLanguage: "English",
-      location: "São Paulo, Brazil",
-      mutualFriends: 3,
-    },
-    {
-      id: 6,
-      name: "Anna Schmidt",
-      bio: "German teacher and traveler",
-      profilePic:
-        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
-      nativeLanguage: "German",
-      learningLanguage: "Italian",
-      location: "Berlin, Germany",
-      mutualFriends: 1,
-    },
-    {
-      id: 7,
-      name: "Ahmed Hassan",
-      bio: "Arabic language expert",
-      profilePic:
-        "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=150&h=150&fit=crop&crop=face",
-      nativeLanguage: "Arabic",
-      learningLanguage: "English",
-      location: "Cairo, Egypt",
-      mutualFriends: 2,
-    },
-  ];
+  // Fetch real recommended users data
+  const { data: recommendedUsers = [], isLoading: loadingUsers } = useQuery({
+    queryKey: ["users"],
+    queryFn: getRecommendedUsers,
+  });
+
+  // Fetch outgoing friend requests to check which users already have pending requests
+  const { data: outgoingFriendReqs } = useQuery({
+    queryKey: ["outgoingFriendReqs"],
+    queryFn: getOutgoingFriendReqs,
+  });
+
+  // Send friend request mutation
+  const { mutate: sendRequestMutation, isPending: isSendingRequest } =
+    useMutation({
+      mutationFn: sendFriendRequest,
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ["outgoingFriendReqs"] });
+      },
+    });
+
+  // Create a set of user IDs that already have pending requests
+  const outgoingRequestsIds = new Set();
+  if (outgoingFriendReqs && outgoingFriendReqs.length > 0) {
+    outgoingFriendReqs.forEach((req) => {
+      outgoingRequestsIds.add(req.recipient._id);
+    });
+  }
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -152,7 +113,7 @@ const FriendsPage = () => {
             }`}
             onClick={() => setActiveTab("suggestions")}
           >
-            Suggestions ({suggestions.length})
+            Suggestions ({recommendedUsers.length})
           </button>
         </div>
 
@@ -177,7 +138,11 @@ const FriendsPage = () => {
               </div>
             </div>
 
-            {friends.length === 0 ? (
+            {loadingFriends ? (
+              <div className="flex justify-center py-12">
+                <span className="loading loading-spinner loading-lg"></span>
+              </div>
+            ) : friends.length === 0 ? (
               <div className="text-center py-12">
                 <Users className="size-16 mx-auto text-base-content/30 mb-4" />
                 <h3 className="text-lg font-semibold mb-2">No friends yet</h3>
@@ -189,51 +154,59 @@ const FriendsPage = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {friends.map((friend) => (
                   <div
-                    key={friend.id}
+                    key={friend._id}
                     className="card bg-base-200 hover:shadow-lg transition-all duration-300"
                   >
                     <div className="card-body p-5">
                       <div className="flex items-center gap-3 mb-4">
                         <div className="avatar relative">
                           <div className="w-12 rounded-full">
-                            <img src={friend.profilePic} alt={friend.name} />
+                            <img
+                              src={friend.profilePic}
+                              alt={friend.fullName}
+                            />
                           </div>
                           <div
                             className={`absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 border-base-200 ${getStatusColor(
-                              friend.status
+                              "online"
                             )}`}
                           ></div>
                         </div>
                         <div className="flex-1">
-                          <h3 className="font-semibold">{friend.name}</h3>
-                          <p className="text-xs text-base-content/70">
-                            {getStatusText(friend.status)}
-                          </p>
+                          <h3 className="font-semibold">{friend.fullName}</h3>
+                          <p className="text-xs text-base-content/70">Online</p>
                         </div>
                       </div>
 
                       <p className="text-sm text-base-content/80 mb-3">
-                        {friend.bio}
+                        {friend.bio || "Language exchange partner"}
                       </p>
 
                       <div className="flex flex-wrap gap-1 mb-4">
                         <span className="badge badge-secondary badge-sm">
-                          {friend.nativeLanguage}
+                          {getLanguageFlag(friend.nativeLanguage)}
+                          {capitialize(friend.nativeLanguage)}
                         </span>
                         <span className="badge badge-outline badge-sm">
-                          {friend.learningLanguage}
+                          {getLanguageFlag(friend.learningLanguage)}
+                          {capitialize(friend.learningLanguage)}
                         </span>
                       </div>
 
                       <div className="flex items-center text-xs text-base-content/70 mb-4">
-                        <span>{friend.location}</span>
+                        <span>
+                          {friend.location || "Location not specified"}
+                        </span>
                       </div>
 
                       <div className="flex gap-2">
-                        <button className="btn btn-primary btn-sm flex-1">
+                        <Link
+                          to={`/chat/${friend._id}`}
+                          className="btn btn-primary btn-sm flex-1"
+                        >
                           <MessageCircle className="size-4 mr-1" />
                           Chat
-                        </button>
+                        </Link>
                         <button className="btn btn-outline btn-sm">
                           <Phone className="size-4" />
                         </button>
@@ -255,57 +228,89 @@ const FriendsPage = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {suggestions.map((user) => (
-                <div
-                  key={user.id}
-                  className="card bg-base-200 hover:shadow-lg transition-all duration-300"
-                >
-                  <div className="card-body p-5">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="avatar">
-                        <div className="w-12 rounded-full">
-                          <img src={user.profilePic} alt={user.name} />
+            {loadingUsers ? (
+              <div className="flex justify-center py-12">
+                <span className="loading loading-spinner loading-lg"></span>
+              </div>
+            ) : recommendedUsers.length === 0 ? (
+              <div className="text-center py-12">
+                <Users className="size-16 mx-auto text-base-content/30 mb-4" />
+                <h3 className="text-lg font-semibold mb-2">
+                  No suggestions available
+                </h3>
+                <p className="text-base-content/70">
+                  Check back later for new language partners!
+                </p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {recommendedUsers.map((user) => {
+                  const hasRequestBeenSent = outgoingRequestsIds.has(user._id);
+
+                  return (
+                    <div
+                      key={user._id}
+                      className="card bg-base-200 hover:shadow-lg transition-all duration-300"
+                    >
+                      <div className="card-body p-5">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="avatar">
+                            <div className="w-12 rounded-full">
+                              <img src={user.profilePic} alt={user.fullName} />
+                            </div>
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="font-semibold">{user.fullName}</h3>
+                            <p className="text-xs text-base-content/70">
+                              Language partner
+                            </p>
+                          </div>
+                        </div>
+
+                        <p className="text-sm text-base-content/80 mb-3">
+                          {user.bio || "Looking for language exchange partners"}
+                        </p>
+
+                        <div className="flex flex-wrap gap-1 mb-4">
+                          <span className="badge badge-secondary badge-sm">
+                            {getLanguageFlag(user.nativeLanguage)}
+                            {capitialize(user.nativeLanguage)}
+                          </span>
+                          <span className="badge badge-outline badge-sm">
+                            {getLanguageFlag(user.learningLanguage)}
+                            {capitialize(user.learningLanguage)}
+                          </span>
+                        </div>
+
+                        <div className="flex items-center text-xs text-base-content/70 mb-4">
+                          <span>
+                            {user.location || "Location not specified"}
+                          </span>
+                        </div>
+
+                        <div className="flex gap-2">
+                          <button
+                            className={`btn btn-sm flex-1 ${
+                              hasRequestBeenSent
+                                ? "btn-disabled"
+                                : "btn-primary"
+                            }`}
+                            onClick={() => sendRequestMutation(user._id)}
+                            disabled={hasRequestBeenSent || isSendingRequest}
+                          >
+                            <UserPlus className="size-4 mr-1" />
+                            {hasRequestBeenSent ? "Request Sent" : "Add Friend"}
+                          </button>
+                          <button className="btn btn-outline btn-sm">
+                            <Heart className="size-4" />
+                          </button>
                         </div>
                       </div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold">{user.name}</h3>
-                        <p className="text-xs text-base-content/70">
-                          {user.mutualFriends} mutual friends
-                        </p>
-                      </div>
                     </div>
-
-                    <p className="text-sm text-base-content/80 mb-3">
-                      {user.bio}
-                    </p>
-
-                    <div className="flex flex-wrap gap-1 mb-4">
-                      <span className="badge badge-secondary badge-sm">
-                        {user.nativeLanguage}
-                      </span>
-                      <span className="badge badge-outline badge-sm">
-                        {user.learningLanguage}
-                      </span>
-                    </div>
-
-                    <div className="flex items-center text-xs text-base-content/70 mb-4">
-                      <span>{user.location}</span>
-                    </div>
-
-                    <div className="flex gap-2">
-                      <button className="btn btn-primary btn-sm flex-1">
-                        <UserPlus className="size-4 mr-1" />
-                        Add Friend
-                      </button>
-                      <button className="btn btn-outline btn-sm">
-                        <Heart className="size-4" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         )}
       </div>
