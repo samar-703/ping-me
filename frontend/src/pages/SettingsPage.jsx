@@ -259,57 +259,59 @@ const SettingsPage = () => {
   };
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold flex items-center gap-3">
-          <Settings className="size-8 text-primary" />
-          Settings
-        </h1>
-        <p className="text-base-content/70 mt-2">
-          Manage your account settings and preferences
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-        {/* Settings Navigation */}
-        <div className="lg:col-span-1">
-          <div className="bg-base-200 rounded-lg p-4 space-y-2">
-            {settingsSections.map((section) => {
-              const IconComponent = section.icon;
-              return (
-                <button
-                  key={section.id}
-                  onClick={() => setActiveSection(section.id)}
-                  className={`btn btn-ghost justify-start w-full gap-3 px-3 normal-case ${
-                    activeSection === section.id ? "btn-active" : ""
-                  }`}
-                >
-                  <IconComponent className="size-5" />
-                  <span>{section.label}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Logout Button */}
-          <div className="mt-6">
-            <button
-              onClick={handleLogout}
-              className="btn btn-error btn-outline w-full gap-3"
-            >
-              <LogOut className="size-5" />
-              Logout
-            </button>
-          </div>
+    <div className="min-h-screen bg-base-100">
+      <div className="p-6 max-w-4xl mx-auto">
+        <div className="mb-6">
+          <h1 className="text-3xl font-bold flex items-center gap-3">
+            <Settings className="size-8 text-primary" />
+            Settings
+          </h1>
+          <p className="text-base-content/70 mt-2">
+            Manage your account settings and preferences
+          </p>
         </div>
 
-        {/* Settings Content */}
-        <div className="lg:col-span-3">
-          <div className="bg-base-200 rounded-lg p-6">
-            <h2 className="text-xl font-semibold mb-6 capitalize">
-              {settingsSections.find((s) => s.id === activeSection)?.label}
-            </h2>
-            {renderContent()}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          {/* Settings Navigation */}
+          <div className="lg:col-span-1">
+            <div className="bg-base-200 rounded-lg p-4 space-y-2">
+              {settingsSections.map((section) => {
+                const IconComponent = section.icon;
+                return (
+                  <button
+                    key={section.id}
+                    onClick={() => setActiveSection(section.id)}
+                    className={`btn btn-ghost justify-start w-full gap-3 px-3 normal-case ${
+                      activeSection === section.id ? "btn-active" : ""
+                    }`}
+                  >
+                    <IconComponent className="size-5" />
+                    <span>{section.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Logout Button */}
+            <div className="mt-6">
+              <button
+                onClick={handleLogout}
+                className="btn btn-error btn-outline w-full gap-3"
+              >
+                <LogOut className="size-5" />
+                Logout
+              </button>
+            </div>
+          </div>
+
+          {/* Settings Content */}
+          <div className="lg:col-span-3">
+            <div className="bg-base-200 rounded-lg p-6">
+              <h2 className="text-xl font-semibold mb-6 capitalize">
+                {settingsSections.find((s) => s.id === activeSection)?.label}
+              </h2>
+              {renderContent()}
+            </div>
           </div>
         </div>
       </div>
