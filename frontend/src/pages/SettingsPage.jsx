@@ -117,7 +117,7 @@ const SettingsPage = () => {
                 <input
                   type="checkbox"
                   defaultChecked
-                  className="checkbox checkbox-primary"
+                  className="toggle toggle-primary"
                 />
               </label>
             </div>
@@ -127,7 +127,7 @@ const SettingsPage = () => {
                 <input
                   type="checkbox"
                   defaultChecked
-                  className="checkbox checkbox-primary"
+                  className="toggle toggle-primary"
                 />
               </label>
             </div>
@@ -137,7 +137,7 @@ const SettingsPage = () => {
                 <input
                   type="checkbox"
                   defaultChecked
-                  className="checkbox checkbox-primary"
+                  className="toggle toggle-primary"
                 />
               </label>
             </div>
@@ -147,7 +147,7 @@ const SettingsPage = () => {
                 <input
                   type="checkbox"
                   defaultChecked
-                  className="checkbox checkbox-primary"
+                  className="toggle toggle-primary"
                 />
               </label>
             </div>
@@ -163,7 +163,7 @@ const SettingsPage = () => {
                 <input
                   type="checkbox"
                   defaultChecked
-                  className="checkbox checkbox-primary"
+                  className="toggle toggle-primary"
                 />
               </label>
             </div>
@@ -173,7 +173,7 @@ const SettingsPage = () => {
                 <input
                   type="checkbox"
                   defaultChecked
-                  className="checkbox checkbox-primary"
+                  className="toggle toggle-primary"
                 />
               </label>
             </div>
@@ -183,7 +183,7 @@ const SettingsPage = () => {
                 <input
                   type="checkbox"
                   defaultChecked
-                  className="checkbox checkbox-primary"
+                  className="toggle toggle-primary"
                 />
               </label>
             </div>
@@ -221,7 +221,7 @@ const SettingsPage = () => {
                 <input
                   type="checkbox"
                   defaultChecked
-                  className="checkbox checkbox-primary"
+                  className="toggle toggle-primary"
                 />
               </label>
             </div>
@@ -231,7 +231,7 @@ const SettingsPage = () => {
                 <input
                   type="checkbox"
                   defaultChecked
-                  className="checkbox checkbox-primary"
+                  className="toggle toggle-primary"
                 />
               </label>
             </div>
@@ -241,7 +241,7 @@ const SettingsPage = () => {
                 <input
                   type="checkbox"
                   defaultChecked
-                  className="checkbox checkbox-primary"
+                  className="toggle toggle-primary"
                 />
               </label>
             </div>
