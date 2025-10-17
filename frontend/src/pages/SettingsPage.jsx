@@ -21,7 +21,7 @@ const SettingsPage = () => {
   const settingsSections = [
     { id: "profile", label: "Profile", icon: User },
     { id: "notifications", label: "Notifications", icon: Bell },
-    { id: "privacy", label: "Privacy & Security", icon: Shield },
+    { id: "privacy", label: "Privacy", icon: Shield },
     { id: "appearance", label: "Appearance", icon: Palette },
     { id: "general", label: "General", icon: Globe },
   ];
