@@ -367,9 +367,6 @@ const ResourcesPage = () => {
               <h2 className="text-2xl font-semibold">
                 {selectedLanguage} Learning Resources
               </h2>
-              <span className="badge badge-primary">
-                {languageResources[selectedLanguage].length} tutorials
-              </span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
