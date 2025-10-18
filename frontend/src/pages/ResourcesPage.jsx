@@ -1,0 +1,431 @@
+import { useState } from "react";
+import { BookOpenIcon, GlobeIcon, PlayIcon } from "lucide-react";
+
+const ResourcesPage = () => {
+  const [selectedLanguage, setSelectedLanguage] = useState("");
+
+  // Language learning resources data
+  const languageResources = {
+    English: [
+      {
+        title: "English Conversation Practice - Beginner",
+        url: "https://www.youtube.com/watch?v=hdI2bqOjy3c",
+        description: "Basic English conversations for beginners",
+      },
+      {
+        title: "English Grammar Made Easy",
+        url: "https://www.youtube.com/watch?v=2nZiB1JItbY",
+        description: "Learn English grammar step by step",
+      },
+      {
+        title: "English Pronunciation Guide",
+        url: "https://www.youtube.com/watch?v=WZQc7RUAg18",
+        description: "Master English pronunciation",
+      },
+      {
+        title: "English Vocabulary Building",
+        url: "https://www.youtube.com/watch?v=0ik6X4DJKCc",
+        description: "Expand your English vocabulary",
+      },
+      {
+        title: "English Listening Practice",
+        url: "https://www.youtube.com/watch?v=PoRJizFvM7s",
+        description: "Improve your English listening skills",
+      },
+      {
+        title: "English Writing Skills",
+        url: "https://www.youtube.com/watch?v=3a0I8ICR1Vg",
+        description: "Learn to write better in English",
+      },
+      {
+        title: "English Idioms and Phrases",
+        url: "https://www.youtube.com/watch?v=R8rmfD9Y5-c",
+        description: "Common English idioms explained",
+      },
+      {
+        title: "English for Business",
+        url: "https://www.youtube.com/watch?v=N8ap4k_1QEQ",
+        description: "Professional English communication",
+      },
+      {
+        title: "English Slang and Informal Language",
+        url: "https://www.youtube.com/watch?v=PFmuCDHHpwk",
+        description: "Learn casual English expressions",
+      },
+      {
+        title: "English Test Preparation",
+        url: "https://www.youtube.com/watch?v=23AOrSN-wmI",
+        description: "Prepare for English proficiency tests",
+      },
+    ],
+    Spanish: [
+      {
+        title: "Spanish for Beginners - Complete Course",
+        url: "https://www.youtube.com/watch?v=kqtD5dpn9C8",
+        description: "Learn Spanish from scratch",
+      },
+      {
+        title: "Spanish Grammar Fundamentals",
+        url: "https://www.youtube.com/watch?v=JJmcL1N2KQs",
+        description: "Master Spanish grammar basics",
+      },
+      {
+        title: "Spanish Pronunciation Guide",
+        url: "https://www.youtube.com/watch?v=8Dvy7WYy1pI",
+        description: "Perfect your Spanish pronunciation",
+      },
+      {
+        title: "Spanish Vocabulary Builder",
+        url: "https://www.youtube.com/watch?v=9Os0o3wzS_I",
+        description: "Expand your Spanish vocabulary",
+      },
+      {
+        title: "Spanish Conversation Practice",
+        url: "https://www.youtube.com/watch?v=Ej_02ICOIgs",
+        description: "Practice speaking Spanish",
+      },
+      {
+        title: "Spanish Listening Comprehension",
+        url: "https://www.youtube.com/watch?v=Y2QjVSCrqbo",
+        description: "Improve Spanish listening skills",
+      },
+      {
+        title: "Spanish Verb Conjugations",
+        url: "https://www.youtube.com/watch?v=NIWwJbo-9_8",
+        description: "Learn Spanish verb forms",
+      },
+      {
+        title: "Spanish Culture and Traditions",
+        url: "https://www.youtube.com/watch?v=3dt4OGnU5sM",
+        description: "Explore Spanish culture",
+      },
+      {
+        title: "Spanish for Travelers",
+        url: "https://www.youtube.com/watch?v=bD05uGo_sVI",
+        description: "Essential Spanish for travel",
+      },
+      {
+        title: "Spanish Slang and Expressions",
+        url: "https://www.youtube.com/watch?v=FsAPt_9Bf3U",
+        description: "Learn informal Spanish",
+      },
+    ],
+    Hindi: [
+      {
+        title: "Hindi Learning for Beginners",
+        url: "https://www.youtube.com/watch?v=SqcY0GlETPk",
+        description: "Start learning Hindi from basics",
+      },
+      {
+        title: "Hindi Alphabet and Script",
+        url: "https://www.youtube.com/watch?v=TNhaISOUy6Q",
+        description: "Learn Devanagari script",
+      },
+      {
+        title: "Hindi Grammar Essentials",
+        url: "https://www.youtube.com/watch?v=9KJxaFHotqI",
+        description: "Master Hindi grammar rules",
+      },
+      {
+        title: "Hindi Vocabulary Building",
+        url: "https://www.youtube.com/watch?v=59IXY5IDrBA",
+        description: "Build your Hindi vocabulary",
+      },
+      {
+        title: "Hindi Conversation Practice",
+        url: "https://www.youtube.com/watch?v=5LrDIWiwKAs",
+        description: "Practice speaking Hindi",
+      },
+      {
+        title: "Hindi Pronunciation Guide",
+        url: "https://www.youtube.com/watch?v=BxgvHd3QpVU",
+        description: "Perfect Hindi pronunciation",
+      },
+      {
+        title: "Hindi Listening Skills",
+        url: "https://www.youtube.com/watch?v=7r4xVDI2v0s",
+        description: "Improve Hindi listening",
+      },
+      {
+        title: "Hindi Writing Practice",
+        url: "https://www.youtube.com/watch?v=6ThXsUwLWvc",
+        description: "Learn to write in Hindi",
+      },
+      {
+        title: "Hindi Culture and Traditions",
+        url: "https://www.youtube.com/watch?v=9boMnm5X9ak",
+        description: "Explore Indian culture",
+      },
+      {
+        title: "Hindi for Daily Life",
+        url: "https://www.youtube.com/watch?v=FJDVKeh7RJI",
+        description: "Common Hindi phrases",
+      },
+    ],
+    French: [
+      {
+        title: "French for Beginners - Complete Course",
+        url: "https://www.youtube.com/watch?v=Oe421EPjeBE",
+        description: "Learn French from the beginning",
+      },
+      {
+        title: "French Grammar Made Simple",
+        url: "https://www.youtube.com/watch?v=L72fhGm1tfE",
+        description: "Master French grammar",
+      },
+      {
+        title: "French Pronunciation Mastery",
+        url: "https://www.youtube.com/watch?v=pKd0Rpw7O48",
+        description: "Perfect French pronunciation",
+      },
+      {
+        title: "French Vocabulary Expansion",
+        url: "https://www.youtube.com/watch?v=WDrU305J1yw",
+        description: "Build your French vocabulary",
+      },
+      {
+        title: "French Conversation Practice",
+        url: "https://www.youtube.com/watch?v=Ud5xKCYQT4M",
+        description: "Practice speaking French",
+      },
+      {
+        title: "French Listening Comprehension",
+        url: "https://www.youtube.com/watch?v=9QzmB1aFT54",
+        description: "Improve French listening",
+      },
+      {
+        title: "French Verb Conjugations",
+        url: "https://www.youtube.com/watch?v=1BfCnjr_Vjg",
+        description: "Learn French verb forms",
+      },
+      {
+        title: "French Culture and Lifestyle",
+        url: "https://www.youtube.com/watch?v=DyqVqaf1KnA",
+        description: "Explore French culture",
+      },
+      {
+        title: "French for Travel",
+        url: "https://www.youtube.com/watch?v=7nafaH9SddU",
+        description: "Essential French for travelers",
+      },
+      {
+        title: "French Slang and Expressions",
+        url: "https://www.youtube.com/watch?v=VShtPwEkDD0",
+        description: "Learn informal French",
+      },
+    ],
+    German: [
+      {
+        title: "German for Beginners - Full Course",
+        url: "https://www.youtube.com/watch?v=eIrMbAQSU34",
+        description: "Complete German learning course",
+      },
+      {
+        title: "German Grammar Fundamentals",
+        url: "https://www.youtube.com/watch?v=BtLqZ0QNfIk",
+        description: "Learn German grammar basics",
+      },
+      {
+        title: "German Pronunciation Guide",
+        url: "https://www.youtube.com/watch?v=rzA7UJ-hQn4",
+        description: "Master German pronunciation",
+      },
+      {
+        title: "German Vocabulary Building",
+        url: "https://www.youtube.com/watch?v=K_-3OLkXkzY",
+        description: "Expand German vocabulary",
+      },
+      {
+        title: "German Conversation Practice",
+        url: "https://www.youtube.com/watch?v=TCd8QIX-6NI",
+        description: "Practice speaking German",
+      },
+      {
+        title: "German Listening Skills",
+        url: "https://www.youtube.com/watch?v=t1-YZ6bF-g0",
+        description: "Improve German listening",
+      },
+      {
+        title: "German Cases and Articles",
+        url: "https://www.youtube.com/watch?v=vtPkZShreXQ",
+        description: "Learn German cases",
+      },
+      {
+        title: "German Culture and History",
+        url: "https://www.youtube.com/watch?v=9SGDpanrc8U",
+        description: "Explore German culture",
+      },
+      {
+        title: "German for Business",
+        url: "https://www.youtube.com/watch?v=v9ejT8FO-7I",
+        description: "Professional German",
+      },
+      {
+        title: "German Idioms and Phrases",
+        url: "https://www.youtube.com/watch?v=2i5t-SL2Vs8",
+        description: "Common German expressions",
+      },
+    ],
+    Japanese: [
+      {
+        title: "Japanese for Beginners - Complete Guide",
+        url: "https://www.youtube.com/watch?v=hdI2bqOjy3c",
+        description: "Learn Japanese from scratch",
+      },
+      {
+        title: "Hiragana and Katakana Learning",
+        url: "https://www.youtube.com/watch?v=2nZiB1JItbY",
+        description: "Master Japanese alphabets",
+      },
+      {
+        title: "Japanese Grammar Basics",
+        url: "https://www.youtube.com/watch?v=WZQc7RUAg18",
+        description: "Learn Japanese grammar",
+      },
+      {
+        title: "Japanese Vocabulary Building",
+        url: "https://www.youtube.com/watch?v=0ik6X4DJKCc",
+        description: "Expand Japanese vocabulary",
+      },
+      {
+        title: "Japanese Conversation Practice",
+        url: "https://www.youtube.com/watch?v=PoRJizFvM7s",
+        description: "Practice speaking Japanese",
+      },
+      {
+        title: "Japanese Pronunciation Guide",
+        url: "https://www.youtube.com/watch?v=3a0I8ICR1Vg",
+        description: "Perfect Japanese pronunciation",
+      },
+      {
+        title: "Japanese Listening Practice",
+        url: "https://www.youtube.com/watch?v=R8rmfD9Y5-c",
+        description: "Improve Japanese listening",
+      },
+      {
+        title: "Japanese Culture and Etiquette",
+        url: "https://www.youtube.com/watch?v=N8ap4k_1QEQ",
+        description: "Learn Japanese culture",
+      },
+      {
+        title: "Japanese for Travel",
+        url: "https://www.youtube.com/watch?v=PFmuCDHHpwk",
+        description: "Essential Japanese for travel",
+      },
+      {
+        title: "Japanese Kanji Learning",
+        url: "https://www.youtube.com/watch?v=23AOrSN-wmI",
+        description: "Master Japanese characters",
+      },
+    ],
+  };
+
+  const languages = Object.keys(languageResources);
+
+  return (
+    <div className="min-h-screen bg-base-100">
+      <div className="p-6 max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold flex items-center gap-3">
+            <BookOpenIcon className="size-8 text-primary" />
+            Language Learning Resources
+          </h1>
+          <p className="text-base-content/70 mt-2">
+            Discover YouTube tutorials to help you learn new languages
+          </p>
+        </div>
+
+        {/* Language Selection */}
+        <div className="card bg-base-200 p-6 mb-8">
+          <div className="form-control w-full max-w-md">
+            <label className="label">
+              <span className="label-text text-lg font-semibold">
+                <GlobeIcon className="size-5 inline mr-2" />
+                Select the language to learn
+              </span>
+            </label>
+            <select
+              className="select select-bordered w-full"
+              value={selectedLanguage}
+              onChange={(e) => setSelectedLanguage(e.target.value)}
+            >
+              <option value="">Choose a language...</option>
+              {languages.map((language) => (
+                <option key={language} value={language}>
+                  {language}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        {/* Resources Display */}
+        {selectedLanguage && (
+          <div className="space-y-6">
+            <div className="flex items-center gap-3">
+              <h2 className="text-2xl font-semibold">
+                {selectedLanguage} Learning Resources
+              </h2>
+              <span className="badge badge-primary">
+                {languageResources[selectedLanguage].length} tutorials
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {languageResources[selectedLanguage].map((resource, index) => (
+                <div
+                  key={index}
+                  className="card bg-base-200 hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="card-body p-5">
+                    <div className="flex items-start gap-3 mb-3">
+                      <div className="flex-shrink-0">
+                        <PlayIcon className="size-6 text-primary" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-lg leading-tight">
+                          {resource.title}
+                        </h3>
+                      </div>
+                    </div>
+
+                    <p className="text-sm text-base-content/70 mb-4">
+                      {resource.description}
+                    </p>
+
+                    <a
+                      href={resource.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-primary btn-sm w-full"
+                    >
+                      <PlayIcon className="size-4 mr-2" />
+                      Watch Tutorial
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Empty State */}
+        {!selectedLanguage && (
+          <div className="text-center py-16">
+            <GlobeIcon className="size-16 mx-auto text-base-content/30 mb-4" />
+            <h3 className="text-lg font-semibold mb-2">
+              Choose a language to get started
+            </h3>
+            <p className="text-base-content/70">
+              Select a language from the dropdown above to see available
+              learning resources
+            </p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default ResourcesPage;

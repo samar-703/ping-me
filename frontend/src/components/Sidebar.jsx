@@ -6,6 +6,7 @@ import {
   ShipWheelIcon,
   UserIcon,
   SettingsIcon,
+  BookOpenIcon,
 } from "lucide-react";
 
 const Sidebar = () => {
@@ -43,7 +44,7 @@ const Sidebar = () => {
             currentPath === "/friends" ? "btn-active" : ""
           }`}
         >
-          <UserIcon className="size-5 text-base-content opacity-70" />
+          <UserIcon className="size-50 text-base-content opacity-70" />
           <span>Friends</span>
         </Link>
 
@@ -65,6 +66,16 @@ const Sidebar = () => {
         >
           <SettingsIcon className="size-5 text-base-content opacity-70" />
           <span>Settings</span>
+        </Link>
+
+        <Link
+          to="/resources"
+          className={`btn btn-ghost justify-start w-full gap-3 normal-case ${
+            currentPath === "/resources" ? "btn-active" : ""
+          }`}
+        >
+          <BookOpenIcon className="size-5 text-base-content opacity-70" />
+          <span>Resources</span>
         </Link>
       </nav>
 
