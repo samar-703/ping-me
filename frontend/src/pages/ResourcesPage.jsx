@@ -9,52 +9,52 @@ const ResourcesPage = () => {
     English: [
       {
         title: "English Conversation Practice - Beginner",
-        url: "https://www.youtube.com/watch?v=hdI2bqOjy3c",
+        url: "https://youtu.be/oWjmNy9pmf8?si=M2_oTjIV4u0jGn3K",
         description: "Basic English conversations for beginners",
       },
       {
         title: "English Grammar Made Easy",
-        url: "https://www.youtube.com/watch?v=2nZiB1JItbY",
+        url: "https://youtu.be/28vxXnY3PL4?si=MHfTor1V3-5KHqVe",
         description: "Learn English grammar step by step",
       },
       {
         title: "English Pronunciation Guide",
-        url: "https://www.youtube.com/watch?v=WZQc7RUAg18",
+        url: "https://youtu.be/QxQUapA-2w4?si=q4oqWh82qEOclQ7t",
         description: "Master English pronunciation",
       },
       {
         title: "English Vocabulary Building",
-        url: "https://www.youtube.com/watch?v=0ik6X4DJKCc",
+        url: "https://youtu.be/Q5RhxOOCWiY?si=6EAqsH1lTcLmcdWt",
         description: "Expand your English vocabulary",
       },
       {
         title: "English Listening Practice",
-        url: "https://www.youtube.com/watch?v=PoRJizFvM7s",
+        url: "https://youtu.be/QMD8kmZIECc?si=6wy3b0tsmmNI72Gh",
         description: "Improve your English listening skills",
       },
       {
         title: "English Writing Skills",
-        url: "https://www.youtube.com/watch?v=3a0I8ICR1Vg",
+        url: "https://youtu.be/QMD8kmZIECc?si=6wy3b0tsmmNI72Gh",
         description: "Learn to write better in English",
       },
       {
         title: "English Idioms and Phrases",
-        url: "https://www.youtube.com/watch?v=R8rmfD9Y5-c",
+        url: "https://youtu.be/HclqADvf35Y?si=P3ojmuUcy0AqZ-SE",
         description: "Common English idioms explained",
       },
       {
         title: "English for Business",
-        url: "https://www.youtube.com/watch?v=N8ap4k_1QEQ",
+        url: "https://youtu.be/fm6PtyM4qMw?si=6--K_rdFrkX6s9np",
         description: "Professional English communication",
       },
       {
         title: "English Slang and Informal Language",
-        url: "https://www.youtube.com/watch?v=PFmuCDHHpwk",
+        url: "https://youtu.be/7fMKxYBNCfc?si=WZdfR1tSZWVJzHWy",
         description: "Learn casual English expressions",
       },
       {
         title: "English Test Preparation",
-        url: "https://www.youtube.com/watch?v=23AOrSN-wmI",
+        url: "https://youtu.be/rtHQQIBAQ6U?si=Fi66fGX5EOYA4Yw3",
         description: "Prepare for English proficiency tests",
       },
     ],
