@@ -61,52 +61,52 @@ const ResourcesPage = () => {
     Spanish: [
       {
         title: "Spanish for Beginners - Complete Course",
-        url: "https://www.youtube.com/watch?v=kqtD5dpn9C8",
+        url: "https://youtube.com/playlist?list=PLv63dFTP4Sjq6knRsZQI-bTnRE38cZZoy&si=82L8D_dritrDyccV",
         description: "Learn Spanish from scratch",
       },
       {
         title: "Spanish Grammar Fundamentals",
-        url: "https://www.youtube.com/watch?v=JJmcL1N2KQs",
+        url: "https://youtu.be/Sh7MLrbxH2E?si=qCMKggSiipFVxfst",
         description: "Master Spanish grammar basics",
       },
       {
         title: "Spanish Pronunciation Guide",
-        url: "https://www.youtube.com/watch?v=8Dvy7WYy1pI",
+        url: "https://youtu.be/kJQjXAVEWt0?si=1Q8IiYqb8lDJCzyh",
         description: "Perfect your Spanish pronunciation",
       },
       {
         title: "Spanish Vocabulary Builder",
-        url: "https://www.youtube.com/watch?v=9Os0o3wzS_I",
+        url: "https://youtu.be/6_5FnCLLYoA?si=XMiWWayk57ouE39r",
         description: "Expand your Spanish vocabulary",
       },
       {
         title: "Spanish Conversation Practice",
-        url: "https://www.youtube.com/watch?v=Ej_02ICOIgs",
+        url: "https://youtu.be/7OU9_C1JnFs?si=QBuG8mMbcac91aCk",
         description: "Practice speaking Spanish",
       },
       {
         title: "Spanish Listening Comprehension",
-        url: "https://www.youtube.com/watch?v=Y2QjVSCrqbo",
+        url: "https://youtu.be/wHx49kSonBM?si=tQd2I4Pe-fhHSeVc",
         description: "Improve Spanish listening skills",
       },
       {
         title: "Spanish Verb Conjugations",
-        url: "https://www.youtube.com/watch?v=NIWwJbo-9_8",
+        url: "https://youtu.be/hezvnkU5KPY?si=gOTL7-Up05jq8RVS",
         description: "Learn Spanish verb forms",
       },
       {
         title: "Spanish Culture and Traditions",
-        url: "https://www.youtube.com/watch?v=3dt4OGnU5sM",
+        url: "https://youtu.be/5e9IHzfiipU?si=7bFUo1zSKgJveI38",
         description: "Explore Spanish culture",
       },
       {
         title: "Spanish for Travelers",
-        url: "https://www.youtube.com/watch?v=bD05uGo_sVI",
+        url: "https://youtu.be/GaS0BiNhWFw?si=4UCjMjsiEFLhVoiW",
         description: "Essential Spanish for travel",
       },
       {
         title: "Spanish Slang and Expressions",
-        url: "https://www.youtube.com/watch?v=FsAPt_9Bf3U",
+        url: "https://youtu.be/H30niCCo2zI?si=UQcGigt8n8TfE5wq",
         description: "Learn informal Spanish",
       },
     ],
