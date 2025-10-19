@@ -188,31 +188,6 @@ const ResourcesPage = () => {
         url: "https://www.youtube.com/watch?v=Ud5xKCYQT4M",
         description: "Practice speaking French",
       },
-      {
-        title: "French Listening Comprehension",
-        url: "https://www.youtube.com/watch?v=9QzmB1aFT54",
-        description: "Improve French listening",
-      },
-      {
-        title: "French Verb Conjugations",
-        url: "https://www.youtube.com/watch?v=1BfCnjr_Vjg",
-        description: "Learn French verb forms",
-      },
-      {
-        title: "French Culture and Lifestyle",
-        url: "https://www.youtube.com/watch?v=DyqVqaf1KnA",
-        description: "Explore French culture",
-      },
-      {
-        title: "French for Travel",
-        url: "https://www.youtube.com/watch?v=7nafaH9SddU",
-        description: "Essential French for travelers",
-      },
-      {
-        title: "French Slang and Expressions",
-        url: "https://www.youtube.com/watch?v=VShtPwEkDD0",
-        description: "Learn informal French",
-      },
     ],
     German: [
       {
@@ -240,31 +215,6 @@ const ResourcesPage = () => {
         url: "https://www.youtube.com/watch?v=TCd8QIX-6NI",
         description: "Practice speaking German",
       },
-      {
-        title: "German Listening Skills",
-        url: "https://www.youtube.com/watch?v=t1-YZ6bF-g0",
-        description: "Improve German listening",
-      },
-      {
-        title: "German Cases and Articles",
-        url: "https://www.youtube.com/watch?v=vtPkZShreXQ",
-        description: "Learn German cases",
-      },
-      {
-        title: "German Culture and History",
-        url: "https://www.youtube.com/watch?v=9SGDpanrc8U",
-        description: "Explore German culture",
-      },
-      {
-        title: "German for Business",
-        url: "https://www.youtube.com/watch?v=v9ejT8FO-7I",
-        description: "Professional German",
-      },
-      {
-        title: "German Idioms and Phrases",
-        url: "https://www.youtube.com/watch?v=2i5t-SL2Vs8",
-        description: "Common German expressions",
-      },
     ],
     Japanese: [
       {
@@ -291,31 +241,6 @@ const ResourcesPage = () => {
         title: "Japanese Conversation Practice",
         url: "https://www.youtube.com/watch?v=PoRJizFvM7s",
         description: "Practice speaking Japanese",
-      },
-      {
-        title: "Japanese Pronunciation Guide",
-        url: "https://www.youtube.com/watch?v=3a0I8ICR1Vg",
-        description: "Perfect Japanese pronunciation",
-      },
-      {
-        title: "Japanese Listening Practice",
-        url: "https://www.youtube.com/watch?v=R8rmfD9Y5-c",
-        description: "Improve Japanese listening",
-      },
-      {
-        title: "Japanese Culture and Etiquette",
-        url: "https://www.youtube.com/watch?v=N8ap4k_1QEQ",
-        description: "Learn Japanese culture",
-      },
-      {
-        title: "Japanese for Travel",
-        url: "https://www.youtube.com/watch?v=PFmuCDHHpwk",
-        description: "Essential Japanese for travel",
-      },
-      {
-        title: "Japanese Kanji Learning",
-        url: "https://www.youtube.com/watch?v=23AOrSN-wmI",
-        description: "Master Japanese characters",
       },
     ],
   };
