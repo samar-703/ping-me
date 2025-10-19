@@ -113,52 +113,52 @@ const ResourcesPage = () => {
     Hindi: [
       {
         title: "Hindi Learning for Beginners",
-        url: "https://www.youtube.com/watch?v=SqcY0GlETPk",
+        url: "https://youtu.be/1lrz11BbqCA?si=XM5Yoh2aj6nKKAsl",
         description: "Start learning Hindi from basics",
       },
       {
         title: "Hindi Alphabet and Script",
-        url: "https://www.youtube.com/watch?v=TNhaISOUy6Q",
+        url: "https://www.youtube.com/playlist?list=PLt0oEzsnHGgL8Sncvj-CXnJhg5EvTcEyg",
         description: "Learn Devanagari script",
       },
       {
         title: "Hindi Grammar Essentials",
-        url: "https://www.youtube.com/watch?v=9KJxaFHotqI",
+        url: "https://youtu.be/duBXkhay8wQ?si=9WspmPExs3hWR2gs",
         description: "Master Hindi grammar rules",
       },
       {
         title: "Hindi Vocabulary Building",
-        url: "https://www.youtube.com/watch?v=59IXY5IDrBA",
+        url: "https://youtu.be/Kg1bs9soDW8?si=4ITqMpUXZJTk-1hh",
         description: "Build your Hindi vocabulary",
       },
       {
         title: "Hindi Conversation Practice",
-        url: "https://www.youtube.com/watch?v=5LrDIWiwKAs",
+        url: "https://youtu.be/58XLv3tZvM0?si=PnWOejv1ZGS5zd2C",
         description: "Practice speaking Hindi",
       },
       {
         title: "Hindi Pronunciation Guide",
-        url: "https://www.youtube.com/watch?v=BxgvHd3QpVU",
+        url: "https://youtu.be/yJHjjjWe0s4?si=KI_WAqqaJnez20ab",
         description: "Perfect Hindi pronunciation",
       },
       {
         title: "Hindi Listening Skills",
-        url: "https://www.youtube.com/watch?v=7r4xVDI2v0s",
+        url: "https://youtu.be/MRX0yV_jkyA?si=sSI-U9Y_u5hwW1nL",
         description: "Improve Hindi listening",
       },
       {
         title: "Hindi Writing Practice",
-        url: "https://www.youtube.com/watch?v=6ThXsUwLWvc",
+        url: "https://youtu.be/OipDSogRJcQ?si=NtCCHSUmJ5HbrWsi",
         description: "Learn to write in Hindi",
       },
       {
         title: "Hindi Culture and Traditions",
-        url: "https://www.youtube.com/watch?v=9boMnm5X9ak",
+        url: "https://youtu.be/dmWeUL_J-oI?si=bURV8Ve9aakV1SPB",
         description: "Explore Indian culture",
       },
       {
         title: "Hindi for Daily Life",
-        url: "https://www.youtube.com/watch?v=FJDVKeh7RJI",
+        url: "https://youtu.be/T9lYpzO6nG0?si=vCjevfEkSd6G2g5A",
         description: "Common Hindi phrases",
       },
     ],
