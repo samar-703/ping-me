@@ -275,7 +275,7 @@ const ResourcesPage = () => {
               value={selectedLanguage}
               onChange={(e) => setSelectedLanguage(e.target.value)}
             >
-              <option value="">Choose a language...</option>
+              <option value="">Pick a language...</option>
               {languages.map((language) => (
                 <option key={language} value={language}>
                   {language}
