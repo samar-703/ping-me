@@ -7,14 +7,13 @@ import {
   UserIcon,
   SettingsIcon,
   BookOpenIcon,
+  ListIcon,
 } from "lucide-react";
 
 const Sidebar = () => {
   const { authUser } = useAuthUser();
   const location = useLocation();
   const currentPath = location.pathname;
-
-  console.log(currentPath);
 
   return (
     <aside className="w-64 bg-base-200 border-r border-base-300 hidden lg:flex flex-col h-screen sticky top-0">
@@ -77,9 +76,19 @@ const Sidebar = () => {
           <BookOpenIcon className="size-5 text-base-content opacity-70" />
           <span>Resources</span>
         </Link>
+
+        <Link
+          to="/todo"
+          className={`btn btn-ghost justify-start w-full gap-3 px-3 normal-case ${
+            currentPath === "/todo" ? "btn-active" : ""
+          }`}
+        >
+          <ListIcon className="size-5 text-base-content opacity-70" />
+          <span>Todo App</span>
+        </Link>
       </nav>
 
-      {/* USER PROFLE SECTION*/}
+      {/* USER PROFILE SECTION*/}
       <div className="p-4 border-t border-base-300 mt-auto">
         <div className="flex items-center gap-3">
           <div className="avatar">

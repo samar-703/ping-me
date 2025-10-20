@@ -15,6 +15,7 @@ import useAuthUser from "./hooks/useAuthUser.js";
 import Layout from "./components/Layout.jsx";
 import { useThemeStore } from "./store/useThemeStore.js";
 
+
 const App = () => {
   // react query tanstack query (to avoid long code, its an optimal way)
 
