@@ -125,14 +125,6 @@ const FriendsPage = () => {
               <div className="flex gap-2">
                 <div className="form-control">
                   <div className="input-group">
-                    <input
-                      type="text"
-                      placeholder="Search friends..."
-                      className="input input-bordered input-sm"
-                    />
-                    <button className="btn btn-square btn-sm">
-                      <Search className="size-4" />
-                    </button>
                   </div>
                 </div>
               </div>
