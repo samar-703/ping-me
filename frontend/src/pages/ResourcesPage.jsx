@@ -340,8 +340,7 @@ const ResourcesPage = () => {
               Choose a language to get started
             </h3>
             <p className="text-base-content/70">
-              Select a language from the dropdown above to see available
-              learning resources
+              These resources only consists of Youtube tutorials for learning new languages. More resources will be added in the future.
             </p>
           </div>
         )}
