@@ -56,7 +56,7 @@ const TodoPage = () => {
             <input
               type="text"
               placeholder="Add a new task..."
-              className="input input-bordered flex-1"
+              className="input input-bordered border-primary/25 flex-1"
               value={newTodo}
               onChange={(e) => setNewTodo(e.target.value)}
               onKeyPress={handleKeyPress}
@@ -74,22 +74,32 @@ const TodoPage = () => {
 
       {/* Stats */}
       {todos.length > 0 && (
-        <div className="stats shadow mb-6">
-          <div className="stat">
-            <div className="stat-title">Total Tasks</div>
-            <div className="stat-value text-primary">{totalCount}</div>
+        <div className="flex gap-4 mb-6">
+          <div className="card bg-base-200 flex-1">
+            <div className="card-body py-3">
+              <div className="text-sm opacity-70">Total Tasks</div>
+              <div className="text-2xl font-bold text-primary">
+                {totalCount}
+              </div>
+            </div>
           </div>
-          <div className="stat">
-            <div className="stat-title">Completed</div>
-            <div className="stat-value text-success">{completedCount}</div>
+          <div className="card bg-base-200 flex-1">
+            <div className="card-body py-3">
+              <div className="text-sm opacity-70">Completed</div>
+              <div className="text-2xl font-bold text-success">
+                {completedCount}
+              </div>
+            </div>
           </div>
-          <div className="stat">
-            <div className="stat-title">Progress</div>
-            <div className="stat-value">
-              {totalCount > 0
-                ? Math.round((completedCount / totalCount) * 100)
-                : 0}
-              %
+          <div className="card bg-base-200 flex-1">
+            <div className="card-body py-3">
+              <div className="text-sm opacity-70">Progress</div>
+              <div className="text-2xl font-bold">
+                {totalCount > 0
+                  ? Math.round((completedCount / totalCount) * 100)
+                  : 0}
+                %
+              </div>
             </div>
           </div>
         </div>
