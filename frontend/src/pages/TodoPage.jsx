@@ -112,7 +112,7 @@ const TodoPage = () => {
 
       {/* Select All Button */}
       {todos.length > 0 && (
-        <div className="flex justify-left mb-2 ml-4 mt-1">
+        <div className="size-9 flex justify-left mb-4 ml-4 mt-1">
           <button
             onClick={selectAllTodos}
             className={`btn btn-outline ${
