@@ -45,7 +45,7 @@ const TodoPage = () => {
   const totalCount = todos.length;
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="max-w-4xl mx-auto p-6 max-h-screen bg-base-100">
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-4xl font-bold text-primary mb-2">Todo App</h1>
@@ -112,16 +112,19 @@ const TodoPage = () => {
 
       {/* Select All Button */}
       {todos.length > 0 && (
-        <div className="size-9 flex justify-left mb-4 ml-4 mt-1">
+        <div className="flex justify-center mb-4">
           <button
             onClick={selectAllTodos}
-            className={`btn btn-outline ${
+            className={`btn btn-sm btn-circle ${
               todos.every((todo) => todo.completed) ? "btn-warning" : "btn-info"
             }`}
+            title={
+              todos.every((todo) => todo.completed)
+                ? "Unselect All"
+                : "Select All"
+            }
           >
-            {todos.every((todo) => todo.completed)
-              ? "Unselect All"
-              : "Select All"}
+            {todos.every((todo) => todo.completed) ? "✓" : "○"}
           </button>
         </div>
       )}
