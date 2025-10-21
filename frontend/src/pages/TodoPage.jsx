@@ -80,7 +80,7 @@ const TodoPage = () => {
       {/* Stats */}
       {todos.length > 0 && (
         <div className="flex gap-4 mb-6">
-          <div className="card bg-base-200 flex-1">
+          <div className="card bg-base-100 flex-1">
             <div className="card-body py-3">
               <div className="text-sm opacity-70">Total Tasks</div>
               <div className="text-2xl font-bold text-primary">
@@ -112,20 +112,20 @@ const TodoPage = () => {
 
       {/* Select All Button */}
       {todos.length > 0 && (
-        <div className="flex justify-center mb-4">
+        <div className="flex items-center gap-2 mb-4 ml-8">
           <button
             onClick={selectAllTodos}
             className={`btn btn-sm btn-circle ${
               todos.every((todo) => todo.completed) ? "btn-warning" : "btn-info"
             }`}
-            title={
-              todos.every((todo) => todo.completed)
-                ? "Unselect All"
-                : "Select All"
-            }
           >
             {todos.every((todo) => todo.completed) ? "✓" : "○"}
           </button>
+          <span className="text-sm font-medium">
+            {todos.every((todo) => todo.completed)
+              ? "Unselect All"
+              : "Select All"}
+          </span>
         </div>
       )}
 
