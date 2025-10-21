@@ -30,6 +30,11 @@ const TodoPage = () => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  const selectAllTodos = () => {
+    const allCompleted = todos.every((todo) => todo.completed);
+    setTodos(todos.map((todo) => ({ ...todo, completed: !allCompleted })));
+  };
+
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       addTodo();
@@ -102,6 +107,22 @@ const TodoPage = () => {
               </div>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Select All Button */}
+      {todos.length > 0 && (
+        <div className="flex justify-left mb-2 ml-4 mt-1">
+          <button
+            onClick={selectAllTodos}
+            className={`btn btn-outline ${
+              todos.every((todo) => todo.completed) ? "btn-warning" : "btn-info"
+            }`}
+          >
+            {todos.every((todo) => todo.completed)
+              ? "Unselect All"
+              : "Select All"}
+          </button>
         </div>
       )}
 
