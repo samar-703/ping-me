@@ -61,7 +61,7 @@ const TodoPage = () => {
             <input
               type="text"
               placeholder="Add a new task..."
-              className="input input-bordered border-primary/25 flex-1"
+              className="input input-bordered flex-1"
               value={newTodo}
               onChange={(e) => setNewTodo(e.target.value)}
               onKeyPress={handleKeyPress}
@@ -119,7 +119,7 @@ const TodoPage = () => {
               todos.every((todo) => todo.completed) ? "btn-warning" : "btn-info"
             }`}
           >
-            {todos.every((todo) => todo.completed) ? "✓" : "○"}
+            {todos.every((todo) => todo.completed) ? "✓" : "O"}
           </button>
           <span className="text-sm font-medium">
             {todos.every((todo) => todo.completed)
