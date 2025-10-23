@@ -111,7 +111,7 @@ const TodoPage = () => {
           </div>
 
           {/* Clear Completed Button - Moved here */}
-          <div className="flex justify-between items-center mb-4">
+          <div className="flex justify-between items-center ml-6 mb-4">
             <div className="flex items-center gap-2">
               <button
                 onClick={selectAllTodos}
