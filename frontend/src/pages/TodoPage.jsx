@@ -50,7 +50,7 @@ const TodoPage = () => {
       <div className="mb-8">
         <h1 className="text-4xl font-bold text-primary mb-2">Todo App</h1>
         <p className="text-base-content opacity-70">
-          Stay organized and get things done
+          Stay organized and get things done with your personal todo list.
         </p>
       </div>
 
@@ -80,7 +80,7 @@ const TodoPage = () => {
       {/* Stats */}
       {todos.length > 0 && (
         <div className="flex gap-4 mb-6">
-          <div className="card bg-base-100 flex-1">
+          <div className="card bg-base-200 flex-1">
             <div className="card-body py-3">
               <div className="text-sm opacity-70">Total Tasks</div>
               <div className="text-2xl font-bold text-primary">

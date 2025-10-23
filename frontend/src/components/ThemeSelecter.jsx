@@ -25,7 +25,7 @@ const ThemeSelecter = () => {
           `}
           onClick={() => setTheme(themeOption.name)}
           >
-            <PaletteIcon className="size-4" />
+            <PaletteIcon className="size-2" />
             <span className="font-medium">{themeOption.label}</span>
             {/* Thmeme preview colors*/}
             <div className="ml-auto flex gap-1">

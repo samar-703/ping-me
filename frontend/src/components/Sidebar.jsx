@@ -79,7 +79,7 @@ const Sidebar = () => {
 
         <Link
           to="/todo"
-          className={`btn btn-ghost ml-2 justify-start w-full gap-3 px-3 normal-case ${
+          className={`btn btn-ghost ml-1 justify-start w-full gap-3 px-4 normal-case ${
             currentPath === "/todo" ? "btn-active" : ""
           }`}
         >
