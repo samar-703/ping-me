@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { PlusIcon, TrashIcon, CheckIcon } from "lucide-react"; // Remove timer-related icons
+import { PlusIcon, TrashIcon, CheckIcon } from "lucide-react";
+import { BriefcaseIcon, HomeIcon } from "lucide-react"; // Add these icons
 
 const TodoPage = () => {
   const [todos, setTodos] = useState([]);
@@ -60,23 +61,28 @@ const TodoPage = () => {
       {/* Header */}
       <div className="mb-8">
         <div className="flex flex-col gap-4 mb-2">
-          <div className="flex gap-2 justify-start">
-            <button
-              onClick={() => setMode("personal")}
-              className={`btn btn-sm ${
-                mode === "personal" ? "btn-primary" : "btn-ghost"
+          <div className="flex items-center gap-3">
+            <HomeIcon
+              className={`size-5 ${
+                mode === "personal" ? "text-primary" : "text-base-content/50"
               }`}
-            >
-              Personal Mode
-            </button>
-            <button
-              onClick={() => setMode("work")}
-              className={`btn btn-sm ${
-                mode === "work" ? "btn-primary" : "btn-ghost"
+            />
+            <label className="swap swap-flip">
+              <input
+                type="checkbox"
+                checked={mode === "work"}
+                onChange={() =>
+                  setMode(mode === "personal" ? "work" : "personal")
+                }
+              />
+              <div className="swap-on">Work Mode</div>
+              <div className="swap-off">Personal Mode</div>
+            </label>
+            <BriefcaseIcon
+              className={`size-5 ${
+                mode === "work" ? "text-primary" : "text-base-content/50"
               }`}
-            >
-              Work Mode
-            </button>
+            />
           </div>
           <div className="flex justify-between items-center">
             <h1 className="text-4xl font-bold text-primary">Todo App</h1>
