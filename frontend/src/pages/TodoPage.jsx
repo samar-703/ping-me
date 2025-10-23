@@ -1,9 +1,20 @@
-import { useState } from "react";
-import { PlusIcon, TrashIcon, CheckIcon } from "lucide-react";
+import { useState, useEffect } from "react";
+import { PlusIcon, TrashIcon, CheckIcon } from "lucide-react"; // Remove timer-related icons
 
 const TodoPage = () => {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
+  const [time, setTime] = useState(new Date()); // Change back to Date object
+  const [mode, setMode] = useState("personal"); // Add new state for mode
+
+  // Restore simple clock timer
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   const addTodo = () => {
     if (newTodo.trim() !== "") {
@@ -48,9 +59,34 @@ const TodoPage = () => {
     <div className="max-w-4xl mx-auto p-6 max-h-screen bg-base-100">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-4xl font-bold text-primary mb-2">Todo App</h1>
+        <div className="flex flex-col gap-4 mb-2">
+          <div className="flex gap-2 justify-start">
+            <button
+              onClick={() => setMode("personal")}
+              className={`btn btn-sm ${
+                mode === "personal" ? "btn-primary" : "btn-ghost"
+              }`}
+            >
+              Personal Mode
+            </button>
+            <button
+              onClick={() => setMode("work")}
+              className={`btn btn-sm ${
+                mode === "work" ? "btn-primary" : "btn-ghost"
+              }`}
+            >
+              Work Mode
+            </button>
+          </div>
+          <div className="flex justify-between items-center">
+            <h1 className="text-4xl font-bold text-primary">Todo App</h1>
+            <div className="text-2xl font-mono text-secondary">
+              {time.toLocaleTimeString()}
+            </div>
+          </div>
+        </div>
         <p className="text-base-content opacity-70">
-          Stay organized and get things done with your personal todo list.
+          Stay organized and get things done with your {mode} todo list.
         </p>
       </div>
 
