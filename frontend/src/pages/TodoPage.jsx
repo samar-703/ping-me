@@ -55,12 +55,12 @@ const TodoPage = () => {
       </div>
 
       {/* Add Todo Section */}
-      <div className="card bg-base-100 shadow-xl mb-6">
+      <div className="card bg-base-100 shadow-xl bg-blend-color mb-6">
         <div className="card-body">
           <div className="flex gap-3">
             <input
               type="text"
-              placeholder="Add a new task..."
+              placeholder="Enter a new task..."
               className="input input-bordered flex-1"
               value={newTodo}
               onChange={(e) => setNewTodo(e.target.value)}
@@ -134,7 +134,7 @@ const TodoPage = () => {
         {todos.length === 0 ? (
           <div className="card bg-base-100 shadow-xl">
             <div className="card-body text-center py-12">
-              <div className="text-6xl opacity-20 mb-4">📝</div>
+              <div className="text-6xl opacity-50 mb-4">📝</div>
               <h3 className="text-xl font-semibold mb-2">No tasks yet</h3>
               <p className="text-base-content opacity-70">
                 Add your first task above to get started!
