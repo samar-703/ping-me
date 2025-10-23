@@ -79,54 +79,68 @@ const TodoPage = () => {
 
       {/* Stats */}
       {todos.length > 0 && (
-        <div className="flex gap-4 mb-6">
-          <div className="card bg-base-200 flex-1">
-            <div className="card-body py-3">
-              <div className="text-sm opacity-70">Total Tasks</div>
-              <div className="text-2xl font-bold text-primary">
-                {totalCount}
+        <>
+          <div className="flex gap-4 mb-6">
+            <div className="card bg-base-200 flex-1">
+              <div className="card-body py-3">
+                <div className="text-sm opacity-70">Total Tasks</div>
+                <div className="text-2xl font-bold text-primary">
+                  {totalCount}
+                </div>
+              </div>
+            </div>
+            <div className="card bg-base-200 flex-1">
+              <div className="card-body py-3">
+                <div className="text-sm opacity-70">Completed</div>
+                <div className="text-2xl font-bold text-success">
+                  {completedCount}
+                </div>
+              </div>
+            </div>
+            <div className="card bg-base-200 flex-1">
+              <div className="card-body py-3">
+                <div className="text-sm opacity-70">Progress</div>
+                <div className="text-2xl font-bold">
+                  {totalCount > 0
+                    ? Math.round((completedCount / totalCount) * 100)
+                    : 0}
+                  %
+                </div>
               </div>
             </div>
           </div>
-          <div className="card bg-base-200 flex-1">
-            <div className="card-body py-3">
-              <div className="text-sm opacity-70">Completed</div>
-              <div className="text-2xl font-bold text-success">
-                {completedCount}
-              </div>
-            </div>
-          </div>
-          <div className="card bg-base-200 flex-1">
-            <div className="card-body py-3">
-              <div className="text-sm opacity-70">Progress</div>
-              <div className="text-2xl font-bold">
-                {totalCount > 0
-                  ? Math.round((completedCount / totalCount) * 100)
-                  : 0}
-                %
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
-      {/* Select All Button */}
-      {todos.length > 0 && (
-        <div className="flex items-center gap-2 mb-4 ml-8">
-          <button
-            onClick={selectAllTodos}
-            className={`btn btn-sm btn-circle ${
-              todos.every((todo) => todo.completed) ? "btn-warning" : "btn-info"
-            }`}
-          >
-            {todos.every((todo) => todo.completed) ? "✓" : "O"}
-          </button>
-          <span className="text-sm font-medium">
-            {todos.every((todo) => todo.completed)
-              ? "Unselect All"
-              : "Select All"}
-          </span>
-        </div>
+          {/* Clear Completed Button - Moved here */}
+          <div className="flex justify-between items-center mb-4">
+            <div className="flex items-center gap-2 ml-8">
+              <button
+                onClick={selectAllTodos}
+                className={`btn btn-sm btn-circle ${
+                  todos.every((todo) => todo.completed)
+                    ? "btn-warning"
+                    : "btn-info"
+                }`}
+              >
+                {todos.every((todo) => todo.completed) ? "✓" : "O"}
+              </button>
+              <span className="text-sm font-medium">
+                {todos.every((todo) => todo.completed)
+                  ? "Unselect All"
+                  : "Select All"}
+              </span>
+            </div>
+            {completedCount > 0 && (
+              <button
+                onClick={() =>
+                  setTodos(todos.filter((todo) => !todo.completed))
+                }
+                className="btn btn-outline btn-error btn-sm"
+              >
+                Clear Completed ({completedCount})
+              </button>
+            )}
+          </div>
+        </>
       )}
 
       {/* Todo List */}
@@ -187,18 +201,6 @@ const TodoPage = () => {
           ))
         )}
       </div>
-
-      {/* Clear Completed Button */}
-      {completedCount > 0 && (
-        <div className="mt-6 text-center">
-          <button
-            onClick={() => setTodos(todos.filter((todo) => !todo.completed))}
-            className="btn btn-outline btn-error"
-          >
-            Clear Completed ({completedCount})
-          </button>
-        </div>
-      )}
     </div>
   );
 };
