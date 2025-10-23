@@ -112,22 +112,15 @@ const TodoPage = () => {
 
           {/* Clear Completed Button - Moved here */}
           <div className="flex justify-between items-center mb-4">
-            <div className="flex items-center gap-2 ml-8">
+            <div className="flex items-center gap-2">
               <button
                 onClick={selectAllTodos}
-                className={`btn btn-sm btn-circle ${
-                  todos.every((todo) => todo.completed)
-                    ? "btn-warning"
-                    : "btn-info"
-                }`}
+                className="btn btn-outline btn-info btn-sm"
               >
-                {todos.every((todo) => todo.completed) ? "✓" : "O"}
-              </button>
-              <span className="text-sm font-medium">
                 {todos.every((todo) => todo.completed)
                   ? "Unselect All"
                   : "Select All"}
-              </span>
+              </button>
             </div>
             {completedCount > 0 && (
               <button
