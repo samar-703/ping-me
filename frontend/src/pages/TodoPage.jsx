@@ -1,21 +1,16 @@
-import { useState, useEffect } from "react";
-import { PlusIcon, TrashIcon, CheckIcon } from "lucide-react";
-import { BriefcaseIcon, HomeIcon } from "lucide-react"; // Add these icons
+import { useState } from "react";
+import {
+  PlusIcon,
+  TrashIcon,
+  CheckIcon,
+  BriefcaseIcon,
+  HomeIcon,
+} from "lucide-react";
 
 const TodoPage = () => {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
-  const [time, setTime] = useState(new Date()); // Change back to Date object
-  const [mode, setMode] = useState("personal"); // Add new state for mode
-
-  // Restore simple clock timer
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
+  const [mode, setMode] = useState("personal");
 
   const addTodo = () => {
     if (newTodo.trim() !== "") {
@@ -63,11 +58,21 @@ const TodoPage = () => {
         <div className="flex flex-col gap-4 mb-2">
           <div className="flex items-center gap-3">
             <HomeIcon
-              className={`size-5 ${
-                mode === "personal" ? "text-primary" : "text-base-content/50"
+              className={`size-5 transition-all ease-in-out duration-300 
+              ${
+                mode === "personal"
+                  ? "text-primary hover:text-success"
+                  : "text-base-content/50 hover:text-primary"
               }`}
             />
-            <label className="swap swap-flip">
+            <label
+              className={`swap swap-flip transition-all ease-in-out duration-300 hover:scale-110
+              ${
+                mode === "personal"
+                  ? "text-primary hover:text-success"
+                  : "text-base-content hover:text-primary"
+              }`}
+            >
               <input
                 type="checkbox"
                 checked={mode === "work"}
@@ -75,20 +80,24 @@ const TodoPage = () => {
                   setMode(mode === "personal" ? "work" : "personal")
                 }
               />
-              <div className="swap-on">Work Mode</div>
-              <div className="swap-off">Personal Mode</div>
+              <div className="swap-on transform transition-all hover:scale-110">
+                Work Mode
+              </div>
+              <div className="swap-off transform transition-all hover:scale-110">
+                Personal Mode
+              </div>
             </label>
             <BriefcaseIcon
-              className={`size-5 ${
-                mode === "work" ? "text-primary" : "text-base-content/50"
+              className={`size-5 transition-all ease-in-out duration-300
+              ${
+                mode === "work"
+                  ? "text-primary hover:text-warning"
+                  : "text-base-content/50 hover:text-primary"
               }`}
             />
           </div>
           <div className="flex justify-between items-center">
             <h1 className="text-4xl font-bold text-primary">Todo App</h1>
-            <div className="text-2xl font-mono text-secondary">
-              {time.toLocaleTimeString()}
-            </div>
           </div>
         </div>
         <p className="text-base-content opacity-70">
